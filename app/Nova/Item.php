@@ -5,15 +5,17 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Number;
 
-class Product extends Resource
+class Item extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Product::class;
+    public static $model = \App\Models\Item::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -41,8 +43,19 @@ class Product extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+            Text::make(__('Name'), 'name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+            Text::make(__('Description'), 'description')
+                ->sortable()
+                ->nullable()
+                ->rules('max:255'),
+            Number::make(__('Price'), 'price')
+                ->sortable()
+                ->rules('required', 'numeric', 'min:0'),
         ];
     }
+    
 
     /**
      * Get the cards available for the request.

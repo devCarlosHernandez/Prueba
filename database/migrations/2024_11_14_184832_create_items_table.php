@@ -4,31 +4,31 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSuppliersTable extends Migration
+class CreateItemsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Ejecutar la migración.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('suppliers', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('address');
-            $table->string('phone', 20)->nullable();
+            $table->text('description')->nullable();
+            $table->decimal('price', 10, 2); 
             $table->timestamps();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Deshacer la migración.
      *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('suppliers');
+        Schema::dropIfExists('items');
     }
 }

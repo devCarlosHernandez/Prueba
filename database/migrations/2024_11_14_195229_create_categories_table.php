@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateCategoriesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Ejecutar la migración.
      *
      * @return void
      */
@@ -15,14 +15,14 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->timestamps();
+            $table->string('name'); 
+            $table->text('description')->nullable(); 
+            $table->timestamps(); 
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Deshacer la migración.
      *
      * @return void
      */
