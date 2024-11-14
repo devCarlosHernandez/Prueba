@@ -53,6 +53,7 @@ class Item extends Resource
             Number::make(__('Price'), 'price')
                 ->sortable()
                 ->rules('required', 'numeric', 'min:0'),
+            
         ];
     }
     
