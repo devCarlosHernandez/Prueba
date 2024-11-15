@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\BelongsTo;
 
 class Item extends Resource
 {
@@ -39,6 +40,7 @@ class Item extends Resource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
+
     public function fields(Request $request)
     {
         return [
@@ -53,6 +55,10 @@ class Item extends Resource
             Number::make(__('Price'), 'price')
                 ->sortable()
                 ->rules('required', 'numeric', 'min:0'),
+            BelongsTo::make(__('Categories'), 'categories', Category::class)
+                ->sortable()
+                ->nullable()
+                ->rules('required'),
             
         ];
     }
