@@ -30,7 +30,7 @@ class Category extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'name',
     ];
 
     /**
@@ -49,6 +49,7 @@ class Category extends Resource
             Text::make(__('Description'), 'description')
                 ->sortable()
                 ->rules('required', 'max:255'),
+            
         ];
     }
 
