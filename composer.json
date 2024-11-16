@@ -9,9 +9,10 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
+        "laravel/nova": "3.32.0",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "laravel/nova": "3.32.0"
+        "sashalenz/nova-activitylog": "^1.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

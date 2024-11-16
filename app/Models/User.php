@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+
+
 
 class User extends Authenticatable
 {
@@ -15,13 +19,23 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
-     */
+ññññññ     */
     protected $fillable = [
         'name',
         'email',
         'password',
     ];
+
+    use LogsActivity;
+
+    protected static $logAttributes = ['name', 'email'];
+    protected static $logName = 'usuario';
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['name', 'email']); 
+    }
 
     /**
      * The attributes that should be hidden for serialization.
