@@ -20,13 +20,13 @@ class Category extends Model{
 
     use LogsActivity;
 
-    protected static $logAttributes = ['name', 'email']; // Atributos a registrar
-    protected static $logName = 'user'; // Nombre del log
+    protected static $logAttributes = ['name', 'description'];
+    protected static $logName = 'category';
 
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['name', 'email']); 
+            ->logOnly(['name', 'description']);
     }
     
 }
