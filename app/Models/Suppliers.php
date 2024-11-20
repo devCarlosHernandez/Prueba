@@ -14,13 +14,12 @@ class Suppliers extends Model
     use LogsActivity;
 
     protected static $logAttributes = ['name', 'address', 'phone'];
-    protected static $logName = 'suppliers';
+    protected static $logName = 'Suppliers';
 
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['name', 'address', 'phone'])
-            ->dontLogIfAttributesChanged(['item']);
+            ->logOnly(['name', 'address', 'phone']);
     }
 
 }
